@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 /spacex-layout
+.idea
 
 # testing
 /coverage
