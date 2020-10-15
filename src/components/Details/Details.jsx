@@ -1,9 +1,12 @@
 import React from "react";
 import "./details.css";
+import { Link } from "react-router-dom";
+import Main from "../Main/Main";
 
 export default function Details() {
   return (
     <>
+      <Main />
       <main className="details">
         <div className="container">
           <div className="details-row">
@@ -31,9 +34,9 @@ export default function Details() {
             />
           </div>
         </div>
-        <a href="calendar.html" className="button button-back">
+        <Link to="/calendar" className="button button-back">
           go back
-        </a>
+        </Link>
       </main>
     </>
   );
