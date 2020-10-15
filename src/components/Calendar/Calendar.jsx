@@ -1,4 +1,5 @@
 import React from "react";
+import "./calendar.css";
 
 export default function Calendar() {
   return (
@@ -16,7 +17,7 @@ export default function Calendar() {
                   <a
                     className="launches-youtube"
                     href="https://www.youtube.com/watch?v=dLQ2tZEH6G0"
-                  ></a>
+                  />
                 </div>
                 <div className="launches-content">
                   <h2 className="launches-title">FalconSat</h2>

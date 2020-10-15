@@ -1,4 +1,5 @@
 import React from "react";
+import "./details.css";
 
 export default function Details() {
   return (
@@ -27,7 +28,7 @@ export default function Details() {
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-            ></iframe>
+            />
           </div>
         </div>
         <a href="calendar.html" className="button button-back">

@@ -1,6 +1,8 @@
 import React from "react";
+import "./footer.css";
 
-export default function Footer() {
+export default function Footer({ link }) {
+  const { elon_twitter, flickr, twitter, website } = link;
   return (
     <>
       <footer className="footer">
@@ -9,7 +11,7 @@ export default function Footer() {
           <ul className="list">
             <li className="item">
               <a
-                href="/"
+                href={elon_twitter}
                 rel="noopener noreferrer"
                 target="_blank"
                 className="item-link"
@@ -19,7 +21,7 @@ export default function Footer() {
             </li>
             <li className="item">
               <a
-                href="/"
+                href={twitter}
                 rel="noopener noreferrer"
                 target="_blank"
                 className="item-link"
@@ -29,7 +31,7 @@ export default function Footer() {
             </li>
             <li className="item">
               <a
-                href="/"
+                href={flickr}
                 rel="noopener noreferrer"
                 target="_blank"
                 className="item-link"
@@ -39,7 +41,7 @@ export default function Footer() {
             </li>
             <li className="item">
               <a
-                href="/"
+                href={website}
                 rel="noopener noreferrer"
                 target="_blank"
                 className="item-link"
