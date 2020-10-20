@@ -13,3 +13,16 @@
 .calendar-item {
     margin: 15px;
 }
+
+.pagination {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.pagination li {
+    display: inline-block;
+}
+.pagination li.active {
+    background-color: blue;
+}

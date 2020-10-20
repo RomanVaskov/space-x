@@ -3,9 +3,21 @@ import "./calendar.css";
 import Main from "../Main/Main";
 import { Link } from "react-router-dom";
 import { useLaunches } from "../useLaunches/useLaunches";
+import Pagination from "../Pagination/Pagination";
 
 export default function Calendar() {
   const { data } = useLaunches();
+
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [postsPerPage] = React.useState(3);
+
+  // Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
@@ -13,7 +25,7 @@ export default function Calendar() {
       <section className="calendar">
         <div className="container">
           <ul className="calendar-list">
-            {data.map((item) => {
+            {currentPosts.map((item) => {
               return (
                 <li className="calendar-item" key={item.id}>
                   <article className="launches">
@@ -34,6 +46,12 @@ export default function Calendar() {
               );
             })}
           </ul>
+          <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={data.length}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
         </div>
       </section>
     </>
