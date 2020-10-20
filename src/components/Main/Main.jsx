@@ -8,11 +8,11 @@ const video = {
   other: "space",
 };
 
-export default function Main({ rocket }) {
+export default function Main({ rocket, name }) {
   return (
     <>
       <section className="main">
-        <h1 className="title">{rocket}</h1>
+        <h1 className="title">{rocket || name}</h1>
         <div className="video-container">
           <video
             className="video"

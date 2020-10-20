@@ -1,42 +1,48 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+import YouTube from "react-youtube";
 import "./details.css";
-import { Link } from "react-router-dom";
 import Main from "../Main/Main";
+import { useLaunches } from "../useLaunches/useLaunches";
 
-export default function Details() {
+export default function Details(props) {
+  const { getLaunch } = useLaunches();
+
+  const [launch, setLaunch] = React.useState(null);
+
+  React.useEffect(() => {
+    setLaunch(getLaunch(props.match.params.id));
+  }, [getLaunch]);
+
+  const history = useHistory();
+
+  if (!launch) {
+    return null;
+  }
+
+  console.log(launch);
+
   return (
     <>
-      <Main />
+      <Main name={launch.name} />
       <main className="details">
         <div className="container">
           <div className="details-row">
             <div className="details-image">
-              <img
-                src="https://images2.imgbox.com/3c/0e/T8iJcSN3_o.png"
-                alt=""
-              />
+              <img src={launch.links.patch.small} alt={launch.name} />
             </div>
             <div className="details-content">
-              <p className="details-description">
-                Engine failure at 33 seconds and loss of vehicle
-              </p>
+              <p className="details-description">{launch.details}</p>
             </div>
-          </div>
-          <div>
-            <iframe
+            <YouTube
+              videoId={launch.links.youtube_id}
               className="details-youtube"
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/dLQ2tZEH6G0"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
             />
           </div>
         </div>
-        <Link to="/calendar" className="button button-back">
+        <a className="button button-back" onClick={history.goBack}>
           go back
-        </Link>
+        </a>
       </main>
     </>
   );
